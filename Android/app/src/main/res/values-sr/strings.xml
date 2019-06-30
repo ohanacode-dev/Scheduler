@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">O autoru</string>
+    <string name="about_msg">Autor: Ohana Code Development\nEmail: office@ohanacode-dev.com\nURL: http://ohanacode-dev.com</string>
+    <string name="app_name">OC Termini</string>
+    <string name="activate_email">Novi nalog prihvaćen. Proverite email i aktivirajte nalog.</string>
+    <string name="all_senders">Svi pošiljaoci</string>
+    <string name="apply">Primeni</string>
+    <string name="appointment_text">Tekst termina</string>
+    <string name="bad_date">Greška u formatu datuma.</string>
+    <string name="bad_time">Greška u formatu vremena.</string>
+    <string name="cancel">Otkaži</string>
+    <string name="change_theme">Promenite vizuelni stil</string>
+    <string name="email_exists">E-mail adrese već postoji.</string>
+    <string name="dismiss">Zatvori</string>
+    <string name="invalid_email">Greška u formatu e-mail adrese.</string>
+    <string name="invalid_name">Ime mora da bude duže od dva simbola.</string>
+    <string name="invalid_password">Lozinka mora da bude duža od 5 simbola.</string>
+    <string name="new_appointment">Novi termin</string>
+    <string name="password">Lozinka</string>
+    <string name="password_missmatch">Lozinka nije ista kao na serveru. nije moguće ažuriranje.</string>
+    <string name="recipient_email">Email primaoca</string>
+    <string name="reset_pass_msg">Za resetovanje lozinke na serveru, kliknite na: </string>
+    <string name="server_error">Greška u komunikaciji.</string>
+    <string name="set_account">Podesite korisnički nalog</string>
+    <string name="set_duration">Podesite trajanje termina</string>
+    <string name="set_locale">Promenite jezik (English)</string>
+    <string name="sync_failed">Sinhronizacija nije uspela!</string>
+    <string name="sync_in_progress">Sinhronizacija u toku…</string>
+    <string name="sync_success">Sinhronizacija uspešna.</string>
+    <string name="time">Vreme</string>
+    <string name="unactivated_email">Email nije još potvrđen. Proverite email i aktivirajte nalog.</string>
+    <string name="unauthorized_account">Neovlašten nalog.</string>
+    <string name="waiting_for_email_activation">Čeka se potvrda email-a</string>
+    <string name="your_email">Vaš email</string>
+    <string name="your_name">Vaše ime</string>
+    <string name="sending_app_not_enabled">"Da biste zakazali termin, morate da potvrdite email. Trebalo bi da vam je stigao link za potvrdu. Pogledajte i u SPAM."</string>
+
+
+
+</resources>

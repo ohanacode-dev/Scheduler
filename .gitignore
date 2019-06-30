@@ -1,0 +1,6 @@
+QtDesktop/build*
+*.pro.user*
+*/Release*
+*/Debug*
+*.stash
+*.aab

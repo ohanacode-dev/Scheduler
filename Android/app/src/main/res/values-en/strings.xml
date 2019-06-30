@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">About</string>
+    <string name="about_msg">Author: Ohana Code Development\nEmail: office@ohanacode-dev.com\nURL: http://ohanacode-dev.com</string>
+    <string name="app_name">OC Appointments</string>
+    <string name="activate_email">New account is accepted. Check your email to activate it.</string>
+    <string name="all_senders">All senders</string>
+    <string name="apply">Apply</string>
+    <string name="appointment_text">Appointment text</string>
+    <string name="bad_date">Error in date format.</string>
+    <string name="bad_time">Error in time format.</string>
+    <string name="cancel">Cancel</string>
+    <string name="change_theme">Change visual style</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="email_exists">Email address already exists on the server.</string>
+    <string name="invalid_email">Error in email format.</string>
+    <string name="invalid_name">Name must be longer than two symbols</string>
+    <string name="invalid_password">Password must be longer than 5 symbols</string>
+    <string name="new_appointment">New Appointment</string>
+    <string name="password">Password</string>
+    <string name="password_missmatch">Password is not the same as the one on the server. Appointment updating is not possible.</string>
+    <string name="recipient_email">Recipient email.</string>
+    <string name="reset_pass_msg">"To reset your password on the server, please follow: "</string>
+    <string name="server_error">Error in communication with the server.</string>
+    <string name="set_account">Set your user account</string>
+    <string name="set_duration">Set appointment duration</string>
+    <string name="set_locale">Change language (Srpski)</string>
+    <string name="sync_failed">Synchronization failed.</string>
+    <string name="sync_in_progress">Synchronizing…</string>
+    <string name="sync_success">Synchronization success.</string>
+    <string name="time">Time</string>
+    <string name="unactivated_email">Email has not yet been confirmed. Check your email for confirmation link and activate your account.</string>
+    <string name="unauthorized_account">Unauthorized account.</string>
+    <string name="waiting_for_email_activation">Waiting on email confirmation.</string>
+    <string name="your_email">Your email</string>
+    <string name="your_name">Your name</string>
+    <string name="sending_app_not_enabled">"To be able to set appointments, you first need to confirm your email.
+        You should have received an email with a confirmation link. Do look into SPAM as well."</string>
+
+
+</resources>

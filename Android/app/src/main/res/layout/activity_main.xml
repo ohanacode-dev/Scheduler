@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#424344"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/imgBtn_w_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="36sp"
+        android:background="#111111"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="0dp"
+        android:layout_height="36sp"
+        android:background="#111111"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/imgBtn_w_prev"
+        app:layout_constraintRight_toLeftOf="@+id/imgBtn_w_next"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_w_next"
+        android:layout_width="wrap_content"
+        android:layout_height="36sp"
+        android:background="#111111"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_ff" />
+
+    <Spinner
+        android:id="@+id/senderList"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_margin="8sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/spinner_gray"
+        android:popupBackground="@drawable/spinner_popup"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_date" />
+
+
+    <ListView
+        android:id="@+id/list_termini"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5sp"
+        android:background="#424344"
+        android:paddingTop="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_status"
+        app:layout_constraintTop_toBottomOf="@id/senderList"
+        tools:layout_editor_absoluteX="5dp" />
+
+    <TextView
+        android:id="@+id/text_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#111111"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addAppointment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/text_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+
+</android.support.constraint.ConstraintLayout>
