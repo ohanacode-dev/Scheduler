@@ -56,17 +56,17 @@
         <translation>Zaboravili ste lozinku? Resetujte je ovde.</translation>
     </message>
     <message>
-        <location filename="../accountsetupdialog.cpp" line="52"/>
+        <location filename="../accountsetupdialog.cpp" line="51"/>
         <source>ERROR: Email not valid.</source>
         <translation>GREŠKA: Email nije ispravan.</translation>
     </message>
     <message>
-        <location filename="../accountsetupdialog.cpp" line="70"/>
+        <location filename="../accountsetupdialog.cpp" line="69"/>
         <source>ERROR: Password must be longer than 5 characters.</source>
         <translation>GREŠKA: Lozinka mora biti duža od 5 karaktera.</translation>
     </message>
     <message>
-        <location filename="../accountsetupdialog.cpp" line="88"/>
+        <location filename="../accountsetupdialog.cpp" line="87"/>
         <source>ERROR: Password do not match.</source>
         <translation>GREŠKAČ Lozinke nisu iste.</translation>
     </message>
@@ -75,6 +75,8 @@
     <name>Application</name>
     <message>
         <location filename="../application.ui" line="20"/>
+        <location filename="../application.cpp" line="404"/>
+        <location filename="../application.cpp" line="434"/>
         <source>OC Scheduler</source>
         <translation>OC Termini</translation>
     </message>
@@ -114,27 +116,27 @@
         <translation>Pošalji</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="233"/>
+        <location filename="../application.ui" line="236"/>
         <source>Settings</source>
         <translation>Podešavanja</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="243"/>
+        <location filename="../application.ui" line="246"/>
         <source>Language</source>
         <translation>Jezik</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="252"/>
+        <location filename="../application.ui" line="255"/>
         <source>About</source>
         <translation>O aplikaciji</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="257"/>
+        <location filename="../application.ui" line="260"/>
         <source>Account</source>
         <translation>Nalog</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="262"/>
+        <location filename="../application.ui" line="265"/>
         <source>Preset recipients</source>
         <translation>Podesi listu primaoca</translation>
     </message>
@@ -154,13 +156,28 @@
         <translation>Pošiljaoc</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="214"/>
+        <location filename="../application.cpp" line="225"/>
         <source>Author: Rada Berar
 Company: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</source>
         <translation>Autor: Rada Berar
 Firma: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="404"/>
+        <source>The appointment you requested is already occupied. Do you wish to overwrite it?</source>
+        <translation>Termin koji ste tražili je već zauzet. Da li želite da ga prepišete?</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="427"/>
+        <source>Remove the appointment for </source>
+        <translation>Ukloniti termin za</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="429"/>
+        <source> at </source>
+        <translation> u </translation>
     </message>
 </context>
 <context>
@@ -183,17 +200,17 @@ Email: rada.berar@ohanacode-dev.com</translation>
         <translation>Ime:</translation>
     </message>
     <message>
-        <location filename="../presetrecipientsdialog.ui" line="66"/>
+        <location filename="../presetrecipientsdialog.ui" line="84"/>
         <source>Add</source>
         <translation>Dodaj</translation>
     </message>
     <message>
-        <location filename="../presetrecipientsdialog.cpp" line="48"/>
+        <location filename="../presetrecipientsdialog.cpp" line="54"/>
         <source>ERROR: Name must be longer than 2 characters!</source>
         <translation>GREŠKA: Ime mora biti duže od 2 karaktera</translation>
     </message>
     <message>
-        <location filename="../presetrecipientsdialog.cpp" line="50"/>
+        <location filename="../presetrecipientsdialog.cpp" line="56"/>
         <source>ERROR: email is not valid!</source>
         <translation>GREŠKAČ Email nije ispravan!</translation>
     </message>

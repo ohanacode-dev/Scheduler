@@ -56,17 +56,17 @@
         <translation>Forgot your password? Reset it here.</translation>
     </message>
     <message>
-        <location filename="../accountsetupdialog.cpp" line="52"/>
+        <location filename="../accountsetupdialog.cpp" line="51"/>
         <source>ERROR: Email not valid.</source>
         <translation>ERROR: Email not valid.</translation>
     </message>
     <message>
-        <location filename="../accountsetupdialog.cpp" line="70"/>
+        <location filename="../accountsetupdialog.cpp" line="69"/>
         <source>ERROR: Password must be longer than 5 characters.</source>
         <translation>ERROR: Password must be longer than 5 characters.</translation>
     </message>
     <message>
-        <location filename="../accountsetupdialog.cpp" line="88"/>
+        <location filename="../accountsetupdialog.cpp" line="87"/>
         <source>ERROR: Password do not match.</source>
         <translation>ERROR: Password do not match.</translation>
     </message>
@@ -75,6 +75,8 @@
     <name>Application</name>
     <message>
         <location filename="../application.ui" line="20"/>
+        <location filename="../application.cpp" line="404"/>
+        <location filename="../application.cpp" line="434"/>
         <source>OC Scheduler</source>
         <translation>OC Scheduler</translation>
     </message>
@@ -114,27 +116,27 @@
         <translation>Send</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="233"/>
+        <location filename="../application.ui" line="236"/>
         <source>Settings</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="243"/>
+        <location filename="../application.ui" line="246"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="252"/>
+        <location filename="../application.ui" line="255"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="257"/>
+        <location filename="../application.ui" line="260"/>
         <source>Account</source>
         <translation>Account</translation>
     </message>
     <message>
-        <location filename="../application.ui" line="262"/>
+        <location filename="../application.ui" line="265"/>
         <source>Preset recipients</source>
         <translation>Preset recipients</translation>
     </message>
@@ -154,13 +156,28 @@
         <translation>From</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="214"/>
+        <location filename="../application.cpp" line="225"/>
         <source>Author: Rada Berar
 Company: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</source>
         <translation>Author: Rada Berar
 Company: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="404"/>
+        <source>The appointment you requested is already occupied. Do you wish to overwrite it?</source>
+        <translation>The appointment you requested is already occupied. Do you wish to overwrite it?</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="427"/>
+        <source>Remove the appointment for </source>
+        <translation>Remove the appointment for</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="429"/>
+        <source> at </source>
+        <translation> at </translation>
     </message>
 </context>
 <context>
@@ -183,17 +200,17 @@ Email: rada.berar@ohanacode-dev.com</translation>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../presetrecipientsdialog.ui" line="66"/>
+        <location filename="../presetrecipientsdialog.ui" line="84"/>
         <source>Add</source>
         <translation>Add</translation>
     </message>
     <message>
-        <location filename="../presetrecipientsdialog.cpp" line="48"/>
+        <location filename="../presetrecipientsdialog.cpp" line="54"/>
         <source>ERROR: Name must be longer than 2 characters!</source>
         <translation>ERROR: Name must be longer than 2 characters!</translation>
     </message>
     <message>
-        <location filename="../presetrecipientsdialog.cpp" line="50"/>
+        <location filename="../presetrecipientsdialog.cpp" line="56"/>
         <source>ERROR: email is not valid!</source>
         <translation>ERROR: email is not valid!</translation>
     </message>
