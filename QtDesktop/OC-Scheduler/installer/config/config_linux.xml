@@ -4,13 +4,13 @@
     <Version>1.0.0</Version>
     <Title>OC Scheduler</Title>
     <Publisher>Ohana Code</Publisher>
-    <StartMenuDir>Ohana Code/OC Scheduler</StartMenuDir>
-    <TargetDir>@ApplicationsDir@/OC_Scheduler</TargetDir>
+    <StartMenuDir>OC-Scheduler</StartMenuDir>
+    <TargetDir>@ApplicationsDir@/OC-Scheduler</TargetDir>
     <ProductUrl>http://scheduleservice.ohanacode-dev.com</ProductUrl>
-    <InstallerWindowIcon>oc_logo.png</InstallerWindowIcon>
-    <InstallerApplicationIcon>oc_logo.png</InstallerApplicationIcon>
+    <InstallerWindowIcon>oc_logo</InstallerWindowIcon>
+    <InstallerApplicationIcon>oc_logo</InstallerApplicationIcon>
     <Logo>oc_logo.png</Logo>
-    <RunProgram>@TargetDir@/OC_Scheduler</RunProgram>
+    <RunProgram>@TargetDir@/OC-Scheduler</RunProgram>
     <RunProgramDescription>Run OC Scheduler After Install</RunProgramDescription>
     <AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
     <WizardStyle>Modern</WizardStyle>

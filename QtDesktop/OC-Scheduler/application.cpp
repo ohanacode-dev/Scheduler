@@ -115,6 +115,7 @@ Application::Application(QWidget *parent) :
     QString languageName = QLocale::languageToString(locale.language());
     switchTranslator(m_translator, QString("Translation_%1.qm").arg(m_currLang));
     switchTranslator(m_translatorQt, QString("qt_%1.qm").arg(m_currLang));
+    ui->calendarWidget->setLocale(locale);
 
     /* Check if we have valid account credentials */
     if((globals->password.length() < 6) || !globals->validateEmail(globals->email)){

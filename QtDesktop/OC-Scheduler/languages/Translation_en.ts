@@ -75,8 +75,8 @@
     <name>Application</name>
     <message>
         <location filename="../application.ui" line="20"/>
-        <location filename="../application.cpp" line="404"/>
-        <location filename="../application.cpp" line="434"/>
+        <location filename="../application.cpp" line="445"/>
+        <location filename="../application.cpp" line="475"/>
         <source>OC Scheduler</source>
         <translation>OC Scheduler</translation>
     </message>
@@ -92,7 +92,7 @@
     </message>
     <message>
         <location filename="../application.ui" line="114"/>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>Time</source>
         <translation>Time:</translation>
     </message>
@@ -141,22 +141,42 @@
         <translation>Preset recipients</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>Message</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>To user</source>
         <translation>To user</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>From</source>
         <translation>From</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="225"/>
+        <location filename="../application.cpp" line="242"/>
+        <source>A new version is available. Do you wish to update?</source>
+        <translation>A new version is available. Do you wish to update?</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="246"/>
+        <source>Do not check for new version again.</source>
+        <translation>Do not check for new version again.</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="249"/>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="250"/>
+        <source>Yes</source>
+        <translation>Yes</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="266"/>
         <source>Author: Rada Berar
 Company: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</source>
@@ -165,17 +185,17 @@ Company: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="404"/>
+        <location filename="../application.cpp" line="445"/>
         <source>The appointment you requested is already occupied. Do you wish to overwrite it?</source>
         <translation>The appointment you requested is already occupied. Do you wish to overwrite it?</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="427"/>
+        <location filename="../application.cpp" line="468"/>
         <source>Remove the appointment for </source>
         <translation>Remove the appointment for</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="429"/>
+        <location filename="../application.cpp" line="470"/>
         <source> at </source>
         <translation> at </translation>
     </message>

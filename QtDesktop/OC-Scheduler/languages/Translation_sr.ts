@@ -75,8 +75,8 @@
     <name>Application</name>
     <message>
         <location filename="../application.ui" line="20"/>
-        <location filename="../application.cpp" line="404"/>
-        <location filename="../application.cpp" line="434"/>
+        <location filename="../application.cpp" line="445"/>
+        <location filename="../application.cpp" line="475"/>
         <source>OC Scheduler</source>
         <translation>OC Termini</translation>
     </message>
@@ -92,7 +92,7 @@
     </message>
     <message>
         <location filename="../application.ui" line="114"/>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>Time</source>
         <translation>Vreme:</translation>
     </message>
@@ -141,22 +141,42 @@
         <translation>Podesi listu primaoca</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>Message</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>To user</source>
         <translation>Primaoc</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="45"/>
+        <location filename="../application.cpp" line="47"/>
         <source>From</source>
         <translation>Pošiljaoc</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="225"/>
+        <location filename="../application.cpp" line="242"/>
+        <source>A new version is available. Do you wish to update?</source>
+        <translation>Nova verzija je dostupna. Da li želite da ažurirate aplikaciju?</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="246"/>
+        <source>Do not check for new version again.</source>
+        <translation>Ne proveravaj više verziju.</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="249"/>
+        <source>No</source>
+        <translation>Ne</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="250"/>
+        <source>Yes</source>
+        <translation>Da</translation>
+    </message>
+    <message>
+        <location filename="../application.cpp" line="266"/>
         <source>Author: Rada Berar
 Company: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</source>
@@ -165,17 +185,17 @@ Firma: Ohana Code Development
 Email: rada.berar@ohanacode-dev.com</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="404"/>
+        <location filename="../application.cpp" line="445"/>
         <source>The appointment you requested is already occupied. Do you wish to overwrite it?</source>
         <translation>Termin koji ste tražili je već zauzet. Da li želite da ga prepišete?</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="427"/>
+        <location filename="../application.cpp" line="468"/>
         <source>Remove the appointment for </source>
         <translation>Ukloniti termin za</translation>
     </message>
     <message>
-        <location filename="../application.cpp" line="429"/>
+        <location filename="../application.cpp" line="470"/>
         <source> at </source>
         <translation> u </translation>
     </message>

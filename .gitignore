@@ -4,3 +4,4 @@ QtDesktop/build*
 */Debug*
 *.stash
 *.aab
+QtDesktop/data/
