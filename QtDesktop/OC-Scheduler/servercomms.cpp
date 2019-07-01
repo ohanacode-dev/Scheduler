@@ -147,7 +147,16 @@ void ServerComms::updateAppointments()
     item.operation = serverOperation::UPDATE;
 
     m_operationQueue.append(item);
-    qDebug() << __FILE__ << __LINE__ << "processOperationQueue" ;
+    processOperationQueue();
+}
+
+void ServerComms::checkForUpdates()
+{
+    queueItem item;
+    item.queryUrl = "?operation=get_update_url&app_id=" + QString(APP_ID) + "&ver=" + QString::number(APP_VERSION);
+    item.operation = serverOperation::CHK_VERSION;
+
+    m_operationQueue.append(item);
     processOperationQueue();
 }
 
@@ -158,8 +167,6 @@ void ServerComms::setAppointment(QString toEmail, QString time, QString text)
     item.operation = serverOperation::ADD;
 
     m_operationQueue.append(item);
-    qDebug() << __FILE__ << __LINE__ << "processOperationQueue" ;
-
     processOperationQueue();
 }
 
@@ -230,7 +237,8 @@ void ServerComms::networkManagerFinished(QNetworkReply *reply)
 
             switch(m_op)
             {
-                case serverOperation::LOGIN:{
+                case serverOperation::LOGIN:
+                {
                     qDebug() << __FILE__ << __LINE__ << "m_op LOGIN";
 
                     bool successFlag = false;
@@ -255,7 +263,8 @@ void ServerComms::networkManagerFinished(QNetworkReply *reply)
 
                 }break;
 
-                case serverOperation::UPDATE:{
+                case serverOperation::UPDATE:
+                {
                     qDebug() << __FILE__ << __LINE__ << "m_op UPDATE";
 
                     if(p_appointmentMap != Q_NULLPTR){
@@ -304,10 +313,23 @@ void ServerComms::networkManagerFinished(QNetworkReply *reply)
 
                 }break;
 
-                case serverOperation::ADD:{
-                    qDebug() << __FILE__ << __LINE__ << "m_op ADD";
+                case serverOperation::ADD:
+                {
+//                    qDebug() << __FILE__ << __LINE__ << "m_op ADD";
                     m_repeatLastOperationFlag = false;
 
+                }break;
+
+                case serverOperation::CHK_VERSION:
+                {
+                    answer.replace(" ", "");
+//                    qDebug() << __FILE__ << __LINE__ << "m_op CHK_VERSION" << answer;
+
+                    if(answer.startsWith("http"))
+                    {
+                        emit signalNewVersionAvailable(answer);
+                    }
+                    m_repeatLastOperationFlag = false;
                 }break;
 
                 default:

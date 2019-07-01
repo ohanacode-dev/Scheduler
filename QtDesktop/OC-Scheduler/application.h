@@ -32,6 +32,7 @@ private slots:
     void refreshUi();
     void displayStatus(QString message);
     void displayNotification(QString message);
+    void notifyNewVersionAvailable(QString message);
     void on_actionPresetRecipients_triggered();
     void on_comboBox_nameList_activated(const QString &arg1);
     void on_btn_send_clicked();

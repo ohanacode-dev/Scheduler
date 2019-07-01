@@ -8,6 +8,8 @@
 #include "globalvars.h"
 #include <QTableWidgetItem>
 #include <QDir>
+#include <QCheckBox>
+#include <QDesktopServices>
 
 Application::Application(QWidget *parent) :
     QMainWindow(parent),
@@ -70,6 +72,9 @@ Application::Application(QWidget *parent) :
     ok = connect(m_comms, SIGNAL(signalAppointmentOccupied()), this, SLOT(notifyAppOccupied()));
     Q_ASSERT(ok);
 
+    ok = connect(m_comms, SIGNAL(signalNewVersionAvailable(QString)), this, SLOT(notifyNewVersionAvailable(QString)));
+    Q_ASSERT(ok);
+
     QActionGroup* langGroup = new QActionGroup(ui->menuLanguage);
     langGroup->setExclusive(true);
     ok = connect(langGroup, SIGNAL (triggered(QAction *)), this, SLOT (slotLanguageChanged(QAction *)));
@@ -117,6 +122,10 @@ Application::Application(QWidget *parent) :
     }
 
     m_comms->restartStateMachine();
+
+    if(globals->checkForUpdates){
+        m_comms->checkForUpdates();
+    }
 }
 
 Application::~Application()
@@ -189,6 +198,9 @@ void Application::loadSettings()
         deserializeRecipients(serializedRecipientList);
     }
 
+    QString checkUpdatesFlag = settings.value("check_updates", "Yes").toString();
+    globals->checkForUpdates = (checkUpdatesFlag.compare("Yes", Qt::CaseInsensitive) == 0);
+
 }
 
 void Application::saveSettings()
@@ -200,12 +212,18 @@ void Application::saveSettings()
         saveAccountFlag = "Yes";
     }
 
+    QString checkUpdatesFlag = "No";
+    if(globals->checkForUpdates){
+        checkUpdatesFlag = "Yes";
+    }
+
     QString serializedRecipientList = serializeRecipients();
     settings.setValue("recipient_list", serializedRecipientList);
     settings.setValue("save_acc", saveAccountFlag);
     settings.setValue("email", globals->email);
     settings.setValue("pass", globals->password);
     settings.setValue("locale", m_currLang);
+    settings.setValue("check_updates", checkUpdatesFlag);
 }
 
 void Application::displayStatus(QString message){
@@ -218,6 +236,28 @@ void Application::displayNotification(QString message){
     Msgbox.exec();
 }
 
+void Application::notifyNewVersionAvailable(QString message){
+    QMessageBox msgBox;
+    msgBox.setText(tr("A new version is available. Do you wish to update?"));
+    QPixmap pixmap = QPixmap(":/oc_logo.png");
+    msgBox.setWindowIcon(QIcon(pixmap));
+
+    QCheckBox *cb = new QCheckBox(tr("Do not check for new version again."));
+    msgBox.setCheckBox(cb);
+
+    msgBox.addButton(tr("No"), QMessageBox::NoRole);
+    QAbstractButton* pButtonYes = msgBox.addButton(tr("Yes"), QMessageBox::YesRole);
+
+    msgBox.exec();
+
+    globals->checkForUpdates = (cb->checkState() == Qt::Unchecked);
+
+    if (msgBox.clickedButton()==pButtonYes) {
+        qDebug() << "Open browser at:" << message ;
+        QDesktopServices::openUrl (QUrl(message));
+        QApplication::quit();
+    }
+}
 
 void Application::on_actionAbout_triggered()
 {

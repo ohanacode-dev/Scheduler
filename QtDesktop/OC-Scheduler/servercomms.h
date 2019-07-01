@@ -32,6 +32,7 @@ signals:
     void signalUpdateDone();
     void signalDone();
     void signalStartStateMachine();
+    void signalNewVersionAvailable(QString url);
 
 public slots:
     void restartStateMachine();
@@ -39,6 +40,7 @@ public slots:
     void updateAppointments();
     void processOperationQueue();
     void loginToServer();
+    void checkForUpdates();
 
 private slots:
     void initServerCommunication();
@@ -60,7 +62,8 @@ private:
         NONE,
         LOGIN,
         UPDATE,
-        ADD
+        ADD,
+        CHK_VERSION
     };
 
     struct queueItem
