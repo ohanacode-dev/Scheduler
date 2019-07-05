@@ -23,13 +23,15 @@ Application::Application(QWidget *parent) :
     globals->selectedDate = QDate::currentDate().toString("dd.MM.yyyy");
 
     /* Load saved settings if any. */
-    QString settingsLocation = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    QString settingsLocation = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/OCScheduler";
     QDir settingsDir(settingsLocation);
     if (!settingsDir.exists()){
         settingsDir.mkdir(".");
     }
 
     m_settingsFile = settingsLocation + SETTINGS_FILE_NAME;
+    qDebug() << "Using settings file:" << m_settingsFile;
+
     loadSettings();
 
     /* Continuing with UI now that we have the locale setup */

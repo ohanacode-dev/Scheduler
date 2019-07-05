@@ -11,8 +11,13 @@ APPEXE=OC-Scheduler
 
 PATH=$QTBINDIR:$QTIFWDIR:$QTINCLUDEDIR:$QTLIBSDIR:$PATH
 
+CALL_DIR=$PWD
+
+cd "$(dirname "$0")"
+
+
 rm -rf build
-cp -r OC-Scheduler/ build
+cp -r ../OC-Scheduler/ build
 cd build
 qmake -config release
 make
@@ -24,10 +29,11 @@ mkdir data/languages
 cp languages/* data/languages/
 cp oc_logo* data
 
-../tools/linuxdeployqt-6-x86_64.AppImage data/$APPEXE -no-translations
+../linuxdeployqt-6-x86_64.AppImage data/$APPEXE -no-translations
 
 cp -r data installer/packages/com.ohanacodedev.OCScheduler/
 
-binarycreator --offline-only -p installer/packages -c installer/config/config_linux.xml ../OC_Scheduler_linux_installer
+rm ../../OC_Scheduler_linux_installer
+binarycreator --offline-only -p installer/packages -c installer/config/config_linux.xml ../../OC_Scheduler_linux_installer
 
-cd ..
+cd $CALL_DIR

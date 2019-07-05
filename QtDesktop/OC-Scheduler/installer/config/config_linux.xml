@@ -5,7 +5,7 @@
     <Title>OC Scheduler</Title>
     <Publisher>Ohana Code</Publisher>
     <StartMenuDir>OC-Scheduler</StartMenuDir>
-    <TargetDir>@ApplicationsDir@/OC-Scheduler</TargetDir>
+    <TargetDir>@HomeDir@/OC-Scheduler</TargetDir>
     <ProductUrl>http://scheduleservice.ohanacode-dev.com</ProductUrl>
     <InstallerWindowIcon>oc_logo</InstallerWindowIcon>
     <InstallerApplicationIcon>oc_logo</InstallerApplicationIcon>
@@ -15,5 +15,5 @@
     <AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
     <WizardStyle>Modern</WizardStyle>
     <MaintenanceToolName>Uninstall OC_Scheduler</MaintenanceToolName>
-    <MaintenanceToolIniFile>Uninstall OC_Scheduler</MaintenanceToolIniFile>
+    <MaintenanceToolIniFile>UninstallerSettings</MaintenanceToolIniFile>
 </Installer>
