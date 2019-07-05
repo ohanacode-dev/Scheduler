@@ -1,7 +1,10 @@
 #!/bin/bash
 
-QT_PATH=~/Qt/5.13.0/gcc_64/bin/
+QTBINDIR=~/Qt/5.13.0/gcc_64/bin/
+PATH=$QTBINDIR:$PATH
 
-$QT_PATH/lupdate -verbose OC-Scheduler/OC-Scheduler.pro
-$QT_PATH/linguist OC-Scheduler/languages/Translation_en.ts OC-Scheduler/languages/Translation_sr.ts
-$QT_PATH/lrelease OC-Scheduler/OC-Scheduler.pro
+cd ..
+
+lupdate -verbose OC-Scheduler/OC-Scheduler.pro
+linguist OC-Scheduler/languages/Translation_en.ts OC-Scheduler/languages/Translation_sr.ts
+lrelease OC-Scheduler/OC-Scheduler.pro
