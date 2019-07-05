@@ -1,5 +1,9 @@
-SET QT_PATH=C:\Qt\5.13.0\msvc2015_64\bin
+SET QTBINDIR=C:\Qt\5.13.0\mingw73_64\bin
+SET COMPILERDIR=C:\Qt\Tools\mingw730_64\bin
+set PATH=%PATH%;%QTBINDIR%;%COMPILERDIR%
 
-%QT_PATH%/lupdate -verbose OC-Scheduler/OC-Scheduler.pro
-%QT_PATH%/linguist OC-Scheduler/languages/Translation_en.ts OC-Scheduler/languages/Translation_sr.ts
-%QT_PATH%/lrelease OC-Scheduler/OC-Scheduler.pro
+cd ..
+
+lupdate -verbose OC-Scheduler/OC-Scheduler.pro
+linguist OC-Scheduler/languages/Translation_en.ts OC-Scheduler/languages/Translation_sr.ts
+lrelease OC-Scheduler/OC-Scheduler.pro
