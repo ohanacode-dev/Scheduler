@@ -80,6 +80,7 @@ private:
 
     int m_tableDataColumnCount = 4;
 
+
 protected:
     // this event is called, when a new translator is loaded or the system language is changed
     void changeEvent(QEvent*);

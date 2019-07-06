@@ -43,6 +43,7 @@ Application::Application(QWidget *parent) :
     ui->lineEdit_email->setText(globals->email);
     ui->lineEdit_message->setDisabled(true);
     ui->timeEdit->setDisplayFormat("HH:mm");
+    ui->timeEdit->setWrapping(true);
     ui->tableWidget_apointments->setColumnCount(5);
     ui->tableWidget_apointments->setSortingEnabled(true);
     ui->tableWidget_apointments->setWordWrap(true);
@@ -483,3 +484,5 @@ void Application::on_tableWidget_apointments_cellClicked(int row, int column)
         }
     }
 }
+
+

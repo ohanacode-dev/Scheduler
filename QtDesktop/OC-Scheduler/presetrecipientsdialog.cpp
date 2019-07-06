@@ -26,8 +26,8 @@ PresetRecipientsDialog::PresetRecipientsDialog(QMap<QString, QString> *recipient
         int rowId = ui->tableWidget_recipients->rowCount();
         ui->tableWidget_recipients->insertRow(rowId);
 
-        ui->tableWidget_recipients->setItem( rowId, 0, new QTableWidgetItem(i.key()));
-        ui->tableWidget_recipients->setItem( rowId, 1, new QTableWidgetItem(i.value()));
+        ui->tableWidget_recipients->setItem( rowId, 1, new QTableWidgetItem(i.key()));
+        ui->tableWidget_recipients->setItem( rowId, 0, new QTableWidgetItem(i.value()));
 
         QTableWidgetItem* item = new QTableWidgetItem;
         item->setIcon(QIcon(":/close.png"));
@@ -77,7 +77,7 @@ void PresetRecipientsDialog::on_buttonBox_accepted()
         QString name = ui->tableWidget_recipients->item(r, 0)->text();
         QString email = ui->tableWidget_recipients->item(r, 1)->text();
 
-        p_recipients->insert(name, email);
+        p_recipients->insert(email, name);
     }
 
     accepted = true;
