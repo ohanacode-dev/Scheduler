@@ -1,6 +1,6 @@
 SET QTBINDIR=C:\Qt\5.13.0\mingw73_64\bin
 SET COMPILERDIR=C:\Qt\Tools\mingw730_64\bin
-SET QTIFWDIR=C:\Qt\Tools\QtInstallerFramework\3.1\bin
+SET QTIFWDIR=C:\Qt\Tools\QtInstallerFramework\3.0\bin
 set QTINCLUDEDIR=C:\Qt\5.13.0\mingw73_64\include
 set QTLIBSDIR=C:\Qt\5.13.0\mingw73_64\lib
 
