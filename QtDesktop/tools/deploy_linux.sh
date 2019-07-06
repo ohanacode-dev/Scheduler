@@ -3,7 +3,7 @@
 QTBINDIR=~/Qt/5.13.0/gcc_64/bin/
 QTLIBDIR=~/Qt/5.13.0/gcc_64/lib/
 QTINCLUDEDIR=~/Qt/5.13.0/gcc_64/include/
-QTIFWDIR=~/Qt/Tools/QtInstallerFramework/3.1/bin
+QTIFWDIR=~/Qt/Tools/QtInstallerFramework/3.0/bin
 SYSLIBPATH=/usr/lib/x86_64-linux-gnu
 SYSLIBPATH2=/lib/x86_64-linux-gnu/
 
