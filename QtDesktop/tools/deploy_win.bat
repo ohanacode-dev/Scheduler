@@ -19,6 +19,7 @@ mkdir data
 copy release\%APPEXE% data\%APPEXE%
 xcopy languages\* data\languages\ /s /e
 copy oc_logo* data
+copy *.qs data
 
 windeployqt.exe data\%APPEXE%
 

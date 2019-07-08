@@ -14,6 +14,6 @@
     <RunProgramDescription>Run OC Scheduler After Install</RunProgramDescription>
     <AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
     <WizardStyle>Modern</WizardStyle>
-    <MaintenanceToolName>Uninstall OC_Scheduler</MaintenanceToolName>
-    <MaintenanceToolIniFile>UninstallerSettings</MaintenanceToolIniFile>
+    <MaintenanceToolName>Uninstall OC Scheduler</MaintenanceToolName>
+    <MaintenanceToolIniFile>Uninstall OC Scheduler</MaintenanceToolIniFile>
 </Installer>
