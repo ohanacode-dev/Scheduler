@@ -266,7 +266,8 @@ void Application::notifyNewVersionAvailable(QString message){
 void Application::on_actionAbout_triggered()
 {
     QMessageBox Msgbox;
-    Msgbox.setText(tr("Author: Rada Berar\nCompany: Ohana Code Development\nEmail: rada.berar@ohanacode-dev.com"));
+    QString msgText = tr("Version: ") + QString::number(APP_VERSION) + tr("\nAuthor: Rada Berar\nCompany: Ohana Code Development\nEmail: rada.berar@ohanacode-dev.com");
+    Msgbox.setText(msgText);
     QPixmap pixmap = QPixmap(":/oc_logo.png");
     Msgbox.setWindowIcon(QIcon(pixmap));
     Msgbox.exec();

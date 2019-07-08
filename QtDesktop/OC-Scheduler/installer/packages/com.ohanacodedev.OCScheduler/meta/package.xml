@@ -10,6 +10,5 @@
     <UpdateText>Nothing changed compared to the last release</UpdateText>
     <Default>false</Default>
     <ForcedInstallation>true</ForcedInstallation>
-    <Essential>false</Essential>
-	<RequiresAdminRights>true</RequiresAdminRights>
+    <Essential>false</Essential>	
 </Package>

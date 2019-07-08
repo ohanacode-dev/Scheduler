@@ -12,7 +12,7 @@
 #define LOCALE_SR           "Srpski"
 #define ROLE_CLIENT         "client"
 #define ROLE_MULTICLIENT    "multiclient"
-#define APP_VERSION         2
+#define APP_VERSION         3
 #if defined(Q_OS_WIN)
     #define APP_ID              "oc_scheduler_qt_desktop_windows_10"
 #elif defined(Q_OS_LINUX)
