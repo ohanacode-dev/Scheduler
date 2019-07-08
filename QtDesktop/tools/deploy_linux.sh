@@ -28,6 +28,7 @@ cp $APPEXE data/$APPEXE
 mkdir data/languages
 cp languages/* data/languages/
 cp oc_logo* data
+cp *.qs data
 
 ../linuxdeployqt-6-x86_64.AppImage data/$APPEXE -no-translations
 
