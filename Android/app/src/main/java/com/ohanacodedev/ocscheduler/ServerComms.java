@@ -42,6 +42,8 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
     private static final String JSON_KEY_TIME = "time";
     private static final String JSON_KEY_DATE = "date";
     private static final String JSON_KEY_APPOINTMENTS = "appointments";
+    private static final String JSON_KEY_ID = "id";
+    private static final int STACK_TRACE_LEVELS_UP = 3;
 
     private int status = STATUS_OK;
 
@@ -88,10 +90,14 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
 
             return content.toString();
         }catch(Exception ex){
-            Log.e(TAG, ex.getMessage());
+            Log.e(TAG, getLineNumber() + ex.getMessage());
             status = STATUS_ERROR;
             return "";
         }
+    }
+
+    public static String getLineNumber() {
+        return "Line:" + String.valueOf(Thread.currentThread().getStackTrace()[STACK_TRACE_LEVELS_UP].getLineNumber()) + ":";
     }
 
     protected void onProgressUpdate(Integer... progress) {  }
@@ -137,7 +143,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                                 GlobalVars.m_operation = GlobalVars.OP_UPDATE;
                             } else {
                                 GlobalVars.m_operation = GlobalVars.OP_STOP;
-                                Log.e(TAG, "UNEXPECTED RESPONSE:" + response);
+                                Log.e(TAG, getLineNumber() + "UNEXPECTED RESPONSE:" + response);
                                 mainAct.get().setStatus(mainAct.get().getString(R.string.sync_failed));
                             }
                         }
@@ -166,7 +172,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
 
                                             if (selectedSender.equals(mainAct.get().getString(R.string.all_senders)) || selectedSender.equals(sender)) {
                                                 String appointment = jsonApp.getString(JSON_KEY_TIME) + ": " + jsonApp.getString(JSON_KEY_MESSAGE);
-                                                mainAct.get().addToAppointments(appointment);
+                                                mainAct.get().addToAppointments(appointment, jsonApp.getString(JSON_KEY_ID));
                                             }
                                             mainAct.get().addSender(sender);
                                         }
@@ -182,7 +188,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                                 }
 
                             } catch (Exception e) {
-                                Log.e(TAG, e.getMessage());
+                                Log.e(TAG, getLineNumber() + e.getMessage());
                                 mainAct.get().setStatus(mainAct.get().getString(R.string.server_error));
                             }
                         }break;
@@ -198,23 +204,22 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                     }
                 }else{
                     processError(response);
+                    mainAct.get().restartStateMachine();
                 }
             }
         }catch(Exception e){
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, getLineNumber() + e.getMessage());
         }
     }
 
     /* Processes errors if received in the server response. */
     private void processError(String response){
-        Log.i(TAG, "processError");
         GlobalVars.m_operation = GlobalVars.OP_STOP;
 
         try {
             String errorTextAndCode = response.split(":")[0];
             String errorCode = errorTextAndCode.split(" ")[1];
 
-            String userMessage = "";
 
             switch (errorCode) {
                 case ERR_TOKEN_INVALID:
@@ -272,7 +277,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
             }
 
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, getLineNumber() + e.getMessage());
             Log.e(TAG, "UNEXPECTED RESPONSE:" + response);
             if (mainAct.get() != null) {
                 mainAct.get().setStatus(mainAct.get().getString(R.string.sync_failed));

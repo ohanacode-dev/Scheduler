@@ -24,6 +24,7 @@ public class GlobalVars {
     public static String addAppointmentTime = "";
     public static String addAppointmentText = "";
     public static String addAppointmentEmail = "";
+    public static String addAppointmentId= "";
     public static String account_token = "";
     public static String pending_request_url = "";
     public static int connection_retries = 0;

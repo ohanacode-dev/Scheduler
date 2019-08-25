@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final String ROLE_PENDING = "pending";
     private static final String ROLE_CLIENT = "client";
     private static final String ROLE_MULTICLIENT = "multiclient";
+    private static final String ROLE_SUPERCLIENT = "superclient";
 
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PASSWORD = "password";
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private List<String> senderListItems;
 
     private ArrayList<String> pacijenti = new ArrayList<>();
+    private Map<String, String> idList= new HashMap<>();
     private ArrayAdapter<String> pacijentiAdapter;
 
     private static boolean accountSetupInProgressFlag = false;
@@ -526,7 +528,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         in_to.setHint(getString(R.string.recipient_email));
         in_to.setText(GlobalVars.addAppointmentEmail);
 
-        if(GlobalVars.account_role.equals(ROLE_MULTICLIENT)) {
+        if(GlobalVars.account_role.equals(ROLE_MULTICLIENT) || GlobalVars.account_role.equals(ROLE_SUPERCLIENT)) {
             layout.addView(in_to);
         }
 
@@ -623,10 +625,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             String[] entry = pacijenti.get(id).split(": ");
             GlobalVars.addAppointmentTime = entry[0];
             GlobalVars.addAppointmentText = entry[1].trim();
+            GlobalVars.addAppointmentId = idList.get(pacijenti.get(id));
         }catch(Exception e){
             Log.e(TAG, e.getMessage());
             GlobalVars.addAppointmentTime =  pacijenti.get(id);
             GlobalVars.addAppointmentText = "";
+            GlobalVars.addAppointmentId = "";
         }
 
         addAppointment();
@@ -711,7 +715,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         Log.e(TAG, e.getMessage());
                     }
 
-                    GlobalVars.pending_request_url = "?operation=set_app&token=" + GlobalVars.account_token + "&time=" + GlobalVars.addAppointmentTime + "&date=" + formatQueryDate() + "&body=" + body + "&email=" + GlobalVars.addAppointmentEmail;
+                    GlobalVars.pending_request_url = "?operation=set_app&token=" + GlobalVars.account_token + "&time=" + GlobalVars.addAppointmentTime + "&date=" +
+                            formatQueryDate() + "&body=" + body + "&email=" + GlobalVars.addAppointmentEmail + "&app_id=" + GlobalVars.addAppointmentId;
                     GlobalVars.m_lastOperation = GlobalVars.m_operation;
                     GlobalVars.m_operation = GlobalVars.OP_IDLE;
                     break;
@@ -767,16 +772,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         pacijenti.clear();
+        idList.clear();
         pacijentiAdapter.notifyDataSetChanged();
     }
 
     public void clearAppointmentList(){
         pacijenti.clear();
+        idList.clear();
     }
 
-    public void addToAppointments(String data){
+    public void addToAppointments(String data, String appId){
+
         if(!pacijenti.contains(data)) {
             pacijenti.add(data);
+            idList.put(data, appId);
         }
     }
 
