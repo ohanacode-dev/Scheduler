@@ -5,6 +5,7 @@
     <string name="app_name">OC Termini</string>
     <string name="activate_email">Novi nalog prihvaćen. Proverite email i aktivirajte nalog.</string>
     <string name="all_senders">Svi pošiljaoci</string>
+    <string name="all_recipients">Svi primaoci</string>
     <string name="apply">Primeni</string>
     <string name="appointment_text">Tekst termina</string>
     <string name="bad_date">Greška u formatu datuma.</string>
@@ -21,6 +22,8 @@
     <string name="password_missmatch">Lozinka nije ista kao na serveru. nije moguće ažuriranje.</string>
     <string name="recipient_email">Email primaoca</string>
     <string name="reset_pass_msg">Za resetovanje lozinke na serveru, kliknite na: </string>
+    <string name="filter_sender">Filter pošiljaoca</string>
+    <string name="filter_recipient">Filter primaoca</string>
     <string name="server_error">Greška u komunikaciji.</string>
     <string name="set_account">Podesite korisnički nalog</string>
     <string name="set_duration">Podesite trajanje termina</string>

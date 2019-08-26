@@ -38,6 +38,8 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
 
     private static final String JSON_KEY_SENDER_NAME = "sender_name";
     private static final String JSON_KEY_SENDER_EMAIL = "sender_email";
+    private static final String JSON_KEY_RECIPIENT_NAME = "recipient_name";
+    private static final String JSON_KEY_RECIPIENT_EMAIL = "recipient_email";
     private static final String JSON_KEY_MESSAGE = "message";
     private static final String JSON_KEY_TIME = "time";
     private static final String JSON_KEY_DATE = "date";
@@ -168,13 +170,17 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                                         if(jsonApp.getString(JSON_KEY_MESSAGE).length() > 2) {
                                             /* Message appears not to be empty */
                                             String sender = jsonApp.getString(JSON_KEY_SENDER_NAME) + "(" + jsonApp.getString(JSON_KEY_SENDER_EMAIL) + ")";
+                                            String recipient = jsonApp.getString(JSON_KEY_RECIPIENT_NAME) + "(" + jsonApp.getString(JSON_KEY_RECIPIENT_EMAIL) + ")";
                                             String selectedSender = mainAct.get().getSelectedSender();
+                                            String selectedRecipient = mainAct.get().getSelectedRecipient();
 
-                                            if (selectedSender.equals(mainAct.get().getString(R.string.all_senders)) || selectedSender.equals(sender)) {
+                                            if ((selectedSender.equals(mainAct.get().getString(R.string.all_senders)) || selectedSender.equals(sender))
+                                                && (selectedRecipient.equals(mainAct.get().getString(R.string.all_recipients)) || selectedRecipient.equals(recipient))){
                                                 String appointment = jsonApp.getString(JSON_KEY_TIME) + ": " + jsonApp.getString(JSON_KEY_MESSAGE);
                                                 mainAct.get().addToAppointments(appointment, jsonApp.getString(JSON_KEY_ID));
                                             }
                                             mainAct.get().addSender(sender);
+                                            mainAct.get().addRecipient(recipient);
                                         }
                                     }
 

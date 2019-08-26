@@ -49,11 +49,29 @@
         android:layout_marginLeft="8dp"
         android:background="@drawable/spinner_gray"
         android:popupBackground="@drawable/spinner_popup"
+        android:prompt="@string/filter_sender"
         android:singleLine="true"
+        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_date" />
 
+
+    <Spinner
+        android:id="@+id/recipientList"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_margin="8sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/spinner_gray"
+        android:popupBackground="@drawable/spinner_popup"
+        android:prompt="@string/filter_recipient"
+        android:singleLine="true"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/senderList" />
 
     <ListView
         android:id="@+id/list_termini"
@@ -63,7 +81,7 @@
         android:background="#424344"
         android:paddingTop="10sp"
         app:layout_constraintBottom_toTopOf="@+id/text_status"
-        app:layout_constraintTop_toBottomOf="@id/senderList"
+        app:layout_constraintTop_toBottomOf="@id/recipientList"
         tools:layout_editor_absoluteX="5dp" />
 
     <TextView

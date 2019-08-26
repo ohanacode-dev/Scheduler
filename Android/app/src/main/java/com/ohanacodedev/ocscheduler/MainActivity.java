@@ -79,12 +79,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private float mTouchStartPointY;
     private int mActionType = ACTION_TYPE_DEFAULT;
     private String selectedSender = "";
+    private String selectedRecipient = "";
     private TextView current_day;
     private TextView status_label;
     private Calendar cal;
 
     private Handler serverQueryStateMachineHandler = new Handler();
     private List<String> senderListItems;
+    private List<String> recipientListItems;
 
     private ArrayList<String> pacijenti = new ArrayList<>();
     private Map<String, String> idList= new HashMap<>();
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ListView termini;
 
     private Spinner senderList;
+    private Spinner recipientList;
     private FloatingActionButton addAppointmentBtn;
 
     private int themeNumber = 0;
@@ -124,9 +127,45 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         senderListItems.add( getString(R.string.all_senders));
         selectedSender = getString(R.string.all_senders);
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, senderListItems);
-        senderList.setAdapter(dataAdapter);
-        senderList.setOnItemSelectedListener(this );
+        ArrayAdapter<String> senderDataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, senderListItems);
+        senderList.setAdapter(senderDataAdapter);
+        senderList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                /* User selected a new sender. */
+                selectedSender = senderListItems.get(position);
+                restartStateMachine();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+        /* Set drop down list of recipients */
+        recipientList = findViewById(R.id.recipientList);
+        recipientListItems = new ArrayList<>();
+        recipientListItems.add( getString(R.string.all_recipients));
+        selectedRecipient = getString(R.string.all_recipients);
+
+        ArrayAdapter<String> recipientDataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, recipientListItems);
+        recipientList.setAdapter(recipientDataAdapter);
+        recipientList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                /* User selected a new sender. */
+                selectedRecipient = recipientListItems.get(position);
+                restartStateMachine();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
         /* Display list of appointments */
         termini = findViewById(R.id.list_termini);
@@ -192,9 +231,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-        /* User selected a new sender. */
-        selectedSender = senderListItems.get(position);
-        restartStateMachine();
+
     }
 
     @Override
@@ -309,6 +346,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             GlobalVars.colorText4 = getString(R.string.colorWhite);
 
             senderList.setBackground(getResources().getDrawable(R.drawable.spinner_gray));
+            recipientList.setBackground(getResources().getDrawable(R.drawable.spinner_gray));
         }else{
             GlobalVars.colorBg1 = getString(R.string.colorPinkDark);
             GlobalVars.colorBg2 = getString(R.string.colorPinkLight );
@@ -319,6 +357,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             GlobalVars.colorText4 = getString(R.string.colorWhite);
 
             senderList.setBackground(getResources().getDrawable(R.drawable.spinner_pink));
+            recipientList.setBackground(getResources().getDrawable(R.drawable.spinner_pink));
         }
 
 
@@ -716,7 +755,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     }
 
                     GlobalVars.pending_request_url = "?operation=set_app&token=" + GlobalVars.account_token + "&time=" + GlobalVars.addAppointmentTime + "&date=" +
-                            formatQueryDate() + "&body=" + body + "&email=" + GlobalVars.addAppointmentEmail + "&app_id=" + GlobalVars.addAppointmentId;
+                            formatQueryDate() + "&body=" + body + "&email=" + GlobalVars.addAppointmentEmail;
+
+                    if(GlobalVars.addAppointmentId.length() > 0){
+                        GlobalVars.pending_request_url += "&app_id=" + GlobalVars.addAppointmentId;
+                    }
+
                     GlobalVars.m_lastOperation = GlobalVars.m_operation;
                     GlobalVars.m_operation = GlobalVars.OP_IDLE;
                     break;
@@ -850,9 +894,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return selectedSender;
     }
 
+    public String getSelectedRecipient(){
+        return selectedRecipient;
+    }
+
     public void addSender(String label){
         if(!senderListItems.contains(label)) {
             senderListItems.add(label);
+        }
+    }
+
+    public void addRecipient(String label){
+        if(!recipientListItems.contains(label)) {
+            recipientListItems.add(label);
         }
     }
 

@@ -5,6 +5,7 @@
     <string name="app_name">OC Appointments</string>
     <string name="activate_email">New account is accepted. Check your email to activate it.</string>
     <string name="all_senders">All senders</string>
+    <string name="all_recipients">All recipients</string>
     <string name="apply">Apply</string>
     <string name="appointment_text">Appointment text</string>
     <string name="bad_date">Error in date format.</string>
@@ -21,6 +22,8 @@
     <string name="password_missmatch">Password is not the same as the one on the server. Appointment updating is not possible.</string>
     <string name="recipient_email">Recipient email.</string>
     <string name="reset_pass_msg">"To reset your password on the server, please follow: "</string>
+    <string name="filter_sender">Filter sender</string>
+    <string name="filter_recipient">Filter recipient</string>
     <string name="server_error">Error in communication with the server.</string>
     <string name="set_account">Set your user account</string>
     <string name="set_duration">Set appointment duration</string>
