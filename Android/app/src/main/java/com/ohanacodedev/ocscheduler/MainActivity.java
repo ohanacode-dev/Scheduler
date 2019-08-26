@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private final int displayInterval = 30;
     private ImageButton weekPrev;
     private ImageButton weekNext;
+    private ImageButton dayPrev;
+    private ImageButton dayNext;
     private ListView termini;
 
     private Spinner senderList;
@@ -208,6 +210,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 setNextWeek();
+            }
+        });
+
+        /* Set button for previous day */
+        dayPrev = findViewById(R.id.imgBtn_d_prev);
+        dayPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPreviousDay();
+            }
+        });
+
+        /* Set button for next day */
+        dayNext = findViewById(R.id.imgBtn_d_next);
+        dayNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNextDay();
             }
         });
 
