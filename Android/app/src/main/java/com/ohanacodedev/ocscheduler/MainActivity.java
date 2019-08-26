@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int ACTION_TYPE_DOWN = 3;
     private static final int ACTION_TYPE_LEFT = 4;
     private static final int SLIDE_RANGE = 100;
+    private static final int HISTORY_DAYS = -180;
 
     private float mTouchStartPointX;
     private float mTouchStartPointY;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private FloatingActionButton addAppointmentBtn;
 
     private int themeNumber = 0;
+    private boolean stateMachineRunning = false;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -482,6 +484,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     GlobalVars.account_email = in_email.getText().toString();
                     GlobalVars.account_password = in_password.getText().toString();
                     GlobalVars.account_alias = in_alias.getText().toString();
+                    GlobalVars.account_token = ""; // Force login
 
                     saveAccountSettings();
                     restartStateMachine();
@@ -624,7 +627,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void setPreviousWeek() {
         cal.add(Calendar.DAY_OF_MONTH, -7);
 
-        if(cal.compareTo(Calendar.getInstance()) < 0) {
+        if(cal.compareTo(Calendar.getInstance()) < HISTORY_DAYS) {
             cal = Calendar.getInstance();
         }
 
@@ -643,7 +646,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void setPreviousDay() {
         cal.add(Calendar.DAY_OF_MONTH, -1);
 
-        if(cal.compareTo(Calendar.getInstance()) < 0) {
+        if(cal.compareTo(Calendar.getInstance()) < HISTORY_DAYS) {
             cal = Calendar.getInstance();
         }
 
@@ -698,6 +701,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //            Log.d("StateMachine", "OP:" + GlobalVars.m_operation);
 
             boolean keepRunningFlag = true;
+            stateMachineRunning = true;
 
             switch(GlobalVars.m_operation){
                 case GlobalVars.OP_STOP:
@@ -785,6 +789,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }else{
                     serverQueryStateMachineHandler.postDelayed(this, 180);
                 }
+            }else{
+                stateMachineRunning = false;
             }
         }
     };
@@ -802,17 +808,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dlgAlert.create().show();
     }
 
-    private void stopStateMachine(){
+    public void stopStateMachine(){
         GlobalVars.m_operation = GlobalVars.OP_STOP;
         serverQueryStateMachineHandler.removeCallbacksAndMessages(null);
     }
 
     public void restartStateMachine(){
         if (GlobalVars.m_operation == GlobalVars.OP_STOP){
+            stateMachineRunning = false;
+            serverQueryStateMachineHandler.removeCallbacksAndMessages(null);
             GlobalVars.m_operation = GlobalVars.OP_START;
             stateMachineProcessor.run();
         }else{
             GlobalVars.m_operation = GlobalVars.OP_START;
+            if(!stateMachineRunning){
+                stateMachineProcessor.run();
+            }
         }
 
         pacijenti.clear();

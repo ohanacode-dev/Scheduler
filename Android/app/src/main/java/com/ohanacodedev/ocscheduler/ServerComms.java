@@ -210,7 +210,6 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                     }
                 }else{
                     processError(response);
-                    mainAct.get().restartStateMachine();
                 }
             }
         }catch(Exception e){
@@ -220,12 +219,12 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
 
     /* Processes errors if received in the server response. */
     private void processError(String response){
-        GlobalVars.m_operation = GlobalVars.OP_STOP;
+        mainAct.get().stopStateMachine();
+//        GlobalVars.m_operation = GlobalVars.OP_STOP;
 
         try {
             String errorTextAndCode = response.split(":")[0];
             String errorCode = errorTextAndCode.split(" ")[1];
-
 
             switch (errorCode) {
                 case ERR_TOKEN_INVALID:
@@ -258,6 +257,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
 
                 case ERR_PASSWORD_MISSMATCH:
                     mainAct.get().notify(mainAct.get().getString(R.string.password_missmatch));
+                    mainAct.get().setStatus(mainAct.get().getString(R.string.sync_failed));
                     break;
 
                 case ERR_EMAIL_INVALID:
