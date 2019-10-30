@@ -147,6 +147,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                                 GlobalVars.m_operation = GlobalVars.OP_STOP;
                                 Log.e(TAG, getLineNumber() + "UNEXPECTED RESPONSE:" + response);
                                 mainAct.get().setStatus(mainAct.get().getString(R.string.sync_failed));
+                                mainAct.get().restartStateMachine();
                             }
                         }
                         break;
@@ -230,6 +231,7 @@ public class ServerComms  extends AsyncTask<String, Integer, String> {
                 case ERR_TOKEN_INVALID:
                     GlobalVars.m_operation = GlobalVars.OP_LOGIN;
                     Log.e(TAG, "Token expired. Logging in again");
+                    mainAct.get().restartStateMachine();
                     break;
 
                 case ERR_UNAUTHORIZED:

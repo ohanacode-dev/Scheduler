@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Calendar cal;
 
     private Handler serverQueryStateMachineHandler = new Handler();
+    private final Handler stateMachineRestartHandler = new Handler();
     private List<String> senderListItems;
     private List<String> recipientListItems;
 
@@ -177,15 +178,44 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         termini.setAdapter(pacijentiAdapter);
 
-        termini.setOnTouchListener(new OnSwipeTouchListener(this) {
-            @Override
-            public void onSwipeLeft() {
-                setNextDay();
-            }
+        termini.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
-            public void onSwipeRight() {
-                setPreviousDay();
+            public boolean onTouch(View arg0, MotionEvent event) {
+
+                int x = (int) event.getRawX();
+                int y = (int) event.getRawY();
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mTouchStartPointX = event.getRawX();
+                        mTouchStartPointY = event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if (mTouchStartPointX - x > SLIDE_RANGE) {
+                            mActionType = ACTION_TYPE_LEFT;
+                        } else if (x - mTouchStartPointX > SLIDE_RANGE) {
+                            mActionType = ACTION_TYPE_RIGHT;
+                        } else if (mTouchStartPointY - y > SLIDE_RANGE) {
+                            mActionType = ACTION_TYPE_UP;
+                        } else if (y - mTouchStartPointY > SLIDE_RANGE) {
+                            mActionType = ACTION_TYPE_DOWN;
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        if (mActionType == ACTION_TYPE_RIGHT) {
+                            setPreviousDay();
+                        } else if (mActionType == ACTION_TYPE_LEFT) {
+                            setNextDay();
+                        } else if (mActionType == ACTION_TYPE_UP) {
+
+                        } else if (mActionType == ACTION_TYPE_DOWN) {
+                            restartStateMachine();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
             }
         });
 
@@ -236,6 +266,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         addAppointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GlobalVars.addAppointmentId = "";
                 addAppointment();
             }
         });
@@ -310,40 +341,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        /* This implements appointment list slide detection. */
-        int x = (int) event.getRawX();
-        int y = (int) event.getRawY();
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mTouchStartPointX = event.getRawX();
-                mTouchStartPointY = event.getRawY();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                if (mTouchStartPointX - x > SLIDE_RANGE) {
-                    mActionType = ACTION_TYPE_LEFT;
-                } else if (x - mTouchStartPointX > SLIDE_RANGE) {
-                    mActionType = ACTION_TYPE_RIGHT;
-                } else if (mTouchStartPointY - y > SLIDE_RANGE) {
-                    mActionType = ACTION_TYPE_UP;
-                } else if (y - mTouchStartPointY > SLIDE_RANGE) {
-                    mActionType = ACTION_TYPE_DOWN;
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-                if (mActionType == ACTION_TYPE_RIGHT) {
-                    setPreviousWeek();
-                } else if (mActionType == ACTION_TYPE_LEFT) {
-                    setNextWeek();
-                }
-                break;
-            default:
-                break;
-        }
-        return true;
     }
 
     private void changeTheme(boolean toggle){
@@ -653,6 +650,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         current_day.setText(formatTitleDate());
         restartStateMachine();
+        clearAppointmentList();
+        updateUi();
     }
 
     /* Sets the date to next week and triggers the new appointment update. */
@@ -660,6 +659,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         cal.add(Calendar.DAY_OF_MONTH, 7);
         current_day.setText(formatTitleDate());
         restartStateMachine();
+        clearAppointmentList();
+        updateUi();
     }
 
     /* Sets the date to previous day and triggers the new appointment update. */
@@ -672,6 +673,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         current_day.setText(formatTitleDate());
         restartStateMachine();
+        clearAppointmentList();
+        updateUi();
     }
 
     /* Sets the date to next day and triggers the new appointment update. */
@@ -679,6 +682,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         cal.add(Calendar.DAY_OF_MONTH, 1);
         current_day.setText(formatTitleDate());
         restartStateMachine();
+        clearAppointmentList();
+        updateUi();
     }
 
     /* Selects the clicked appointment and opens the appointment update dialog. */
@@ -834,6 +839,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void restartStateMachine(){
+        stateMachineRestartHandler.removeCallbacksAndMessages(null);
+
+        stateMachineRestartHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                delayedStateMachineRestart();
+            }
+        }, 600);
+    }
+
+    public void delayedStateMachineRestart(){
+        GlobalVars.account_token = "";
         if (GlobalVars.m_operation == GlobalVars.OP_STOP){
             stateMachineRunning = false;
             serverQueryStateMachineHandler.removeCallbacksAndMessages(null);
@@ -944,6 +961,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void setStatus( String text){
         if((status_label.getText().length() < 3) || (status_label.getText().equals(getString(R.string.sync_in_progress)))){
             status_label.setText(text);
+        }else if(text.contains("OK:")){
+            restartStateMachine();
         }
     }
 
